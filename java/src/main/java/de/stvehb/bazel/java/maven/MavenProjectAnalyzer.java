@@ -122,7 +122,7 @@ public class MavenProjectAnalyzer {
 				Node dependenciesNode = XmlUtil.getElement(projectNode, "dependencies");
 				if (dependenciesNode == null) break dependencies;
 
-				List<Node> dependencyNodes = XmlUtil.getChildren(dependenciesNode);
+				List<Node> dependencyNodes = XmlUtil.getChildren(dependenciesNode, "dependency");
 				dependencyNodes.forEach(dependency -> {
 						String dependencyGroupId = XmlUtil.getElement(dependency, "groupId").getTextContent();
 						String dependencyArtifactId = XmlUtil.getElement(dependency, "artifactId").getTextContent();
