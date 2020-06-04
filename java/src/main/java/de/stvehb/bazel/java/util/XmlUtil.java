@@ -73,4 +73,15 @@ public class XmlUtil {
 		return children;
 	}
 
+	/**
+	 * Gets all child elements of the given <i>parent</i> node with the given <i>name</i>.
+	 *
+	 * @return a list of nodes
+	 */
+	public static List<Node> getChildren(Node parent, String name) {
+		List<Node> children = new ArrayList<>();
+		getChildren(parent).stream().filter(c -> c.getNodeName().equalsIgnoreCase(name)).forEach(children::add);
+		return children;
+	}
+
 }
