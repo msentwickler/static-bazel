@@ -21,6 +21,7 @@ import org.w3c.dom.Node;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -189,7 +190,10 @@ public class MavenProjectAnalyzer {
 				this.project.getPackages().add(bazelPackage);
 			}
 
-		} catch (Exception ex) {
+		} catch (NoSuchFileException ex) {
+			LOGGER.warn("No test found", ex);
+		}
+		catch (Exception ex) {
 			LOGGER.error("Analysis of {} failed", pomPath, ex);
 		}
 	}
